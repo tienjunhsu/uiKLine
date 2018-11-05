@@ -4,6 +4,6 @@
 """
 from __future__ import division
 
-from visFunction import *
-from calcFunction import *
+from .visFunction import *
+from .calcFunction import *
 

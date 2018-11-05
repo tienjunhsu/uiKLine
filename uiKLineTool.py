@@ -3,10 +3,10 @@ import sip
 sip.setapi("QString", 2)
 sip.setapi("QVariant", 2)
 import sys
-reload(sys)
-sys.setdefaultencoding('utf8')
+# reload(sys)
+# sys.setdefaultencoding('utf8')
 import os
-os.environ['QT_API'] = 'pyqt'
+# os.environ['QT_API'] = 'pyqt'
 from uiBasicIO import uiBasicIO
 from uiKLine import KLineWidget
 # PyQt
@@ -54,7 +54,7 @@ class uiKLineTool(uiBasicIO):
 
 
     #-----------------------------------------------
-    def loadData(self,data):
+    def loadData(self,data=None):
         """加载数据"""
         self.signals = data['deal']
         self.signalsOpen = data['dealOpen']
@@ -67,7 +67,7 @@ class uiKLineTool(uiBasicIO):
             kTool.pwOI.removeItem(kTool.subSigPlots[sig])
         kTool.subSigData  = {}
         kTool.subSigPlots = {}
-        print u'正在准备回测结果数据....'
+        print(u'正在准备回测结果数据....')
         self.canvas.clearData()
         self.pdBars = data[['open','close','low','high','volume','openInterest']]
         self.canvas.loadData(self.pdBars)
@@ -77,7 +77,8 @@ class uiKLineTool(uiBasicIO):
         self.stateData = data[allState].to_records()
         self.editDict['signalName'].clear()
         self.editDict['signalName'].addItems(allState) 
-        print u'数据准备完成！'
+        print(u'数据准备完成！')
+        self.canvas.show()
 
     #----------------------------------------------------------------------
     def initUi(self):
@@ -103,7 +104,7 @@ if __name__ == '__main__':
     cfgfile = QtCore.QFile('css.qss')
     cfgfile.open(QtCore.QFile.ReadOnly)
     styleSheet = cfgfile.readAll()
-    styleSheet = unicode(styleSheet, encoding='utf8')
+    styleSheet = str(styleSheet, encoding='utf8')
     app.setStyleSheet(styleSheet)
     # K线界面
     ui = uiKLineTool()

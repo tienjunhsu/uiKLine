@@ -819,7 +819,7 @@ if __name__ == '__main__':
     cfgfile = QtCore.QFile('css.qss')
     cfgfile.open(QtCore.QFile.ReadOnly)
     styleSheet = cfgfile.readAll()
-    styleSheet = unicode(styleSheet, encoding='utf8')
+    styleSheet = str(styleSheet, encoding='utf8')
     app.setStyleSheet(styleSheet)
     # K线界面
     ui = KLineWidget()

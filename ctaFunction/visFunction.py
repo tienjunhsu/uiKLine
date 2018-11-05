@@ -11,7 +11,7 @@ import seaborn as sns
 #mpl.rcParams["font.sans-serif"] = ["Microsoft YaHei"]#
 #mpl.rcParams['axes.unicode_minus'] = False
 import matplotlib.pyplot as plt 
-from calcFunction import get_capital_np
+from .calcFunction import get_capital_np
 
 #----------------------------------------------------------------------
 def plotSigCaps(signals,markets,climit=4,wlimit=2,size=1,rate=0.0001,op=True):
